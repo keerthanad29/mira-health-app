@@ -6,7 +6,7 @@ def get_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-# Table create function - app start ஆகும்போது run ஆகும்
+# Create table - runs when app starts
 def create_table():
     conn = get_connection()
     cursor = conn.cursor()
@@ -25,7 +25,7 @@ def create_table():
     conn.commit()
     conn.close()
 
-# CREATE - New patient add பண்ண
+# CREATE - Add new patient record
 def create_patient(full_name, dob, email, glucose, haemoglobin, cholesterol, remarks):
     conn = get_connection()
     cursor = conn.cursor()
@@ -36,7 +36,7 @@ def create_patient(full_name, dob, email, glucose, haemoglobin, cholesterol, rem
     conn.commit()
     conn.close()
 
-# READ - எல்லா patients-யும் get பண்ண
+# READ - Get all patient records
 def get_all_patients():
     conn = get_connection()
     cursor = conn.cursor()
@@ -45,7 +45,7 @@ def get_all_patients():
     conn.close()
     return rows
 
-# READ - ஒரு patient மட்டும் get பண்ண
+# READ - Get single patient by ID
 def get_patient_by_id(patient_id):
     conn = get_connection()
     cursor = conn.cursor()
@@ -54,7 +54,7 @@ def get_patient_by_id(patient_id):
     conn.close()
     return row
 
-# UPDATE - Patient record update பண்ண
+# UPDATE - Update existing patient record
 def update_patient(patient_id, full_name, dob, email, glucose, haemoglobin, cholesterol, remarks):
     conn = get_connection()
     cursor = conn.cursor()
@@ -66,7 +66,7 @@ def update_patient(patient_id, full_name, dob, email, glucose, haemoglobin, chol
     conn.commit()
     conn.close()
 
-# DELETE - Patient record delete பண்ண
+# DELETE - Remove patient record
 def delete_patient(patient_id):
     conn = get_connection()
     cursor = conn.cursor()
